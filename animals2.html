@@ -47,16 +47,11 @@ function Pig(name) {
 	this.focus = 6;
 };
 
-var turtle = new Turtle("Fred");
-var rabbit = new Animal("Jack", 8, 1);
-var dog = new Animal("Lassie", 5, 4);
-var pig = new Animal("Wilbur", 4, 5);
-
 
 //user input
 var name = prompt("Hello! What is your name?");
 var userRacer = prompt(name + ", what kind of animal are you- turtle, rabbit, pig or cat?").toLowerCase();
-var compRacer = prompt("What kind of animal would you like to race- turtle, rabbit, pig or cat?").toLowerCase();
+var compRacer = prompt("What type of animal would you like to race- turtle, rabbit, pig or cat?").toLowerCase();
 
 //set up racers
 switch(userRacer) {
