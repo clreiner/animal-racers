@@ -1,0 +1,108 @@
+<script type="text/javascript">
+//set up Animal object
+function Animal(name) {
+	this.name = name;
+	this.position = 0;
+};
+Animal.prototype.isFocused = function() {
+	return Math.floor(Math.random()*10) < this.focus;
+};
+Animal.prototype.advance = function() {
+	if(this.isFocused) {
+		this.position += this.speed;
+	};
+}
+Animal.prototype.progressReport = function() {
+	return this.name + " is at: " + this.position;
+};
+
+
+//create animal racers
+Turtle.prototype = new Animal();
+Turtle.prototype.constructor = Turtle;
+function Turtle(name) {
+	this.name = name;
+	this.speed = 1;
+	this.focus = 8;
+};
+Rabbit.prototype = new Animal();
+Rabbit.prototype.constructor = Rabbit;
+function Rabbit(name) {
+	this.name = name;
+	this.speed = 8;
+	this.focus = 1;
+};
+Cat.prototype = new Animal();
+Cat.prototype.constructor = Cat;
+function Cat(name) {
+	this.name = name;
+	this.speed = 6;
+	this.focus = 3;
+};
+Pig.prototype = new Animal();
+Pig.prototype.constructor = Pig;
+function Pig(name) {
+	this.name = name;
+	this.speed = 3;
+	this.focus = 6;
+};
+
+var turtle = new Turtle("Fred");
+var rabbit = new Animal("Jack", 8, 1);
+var dog = new Animal("Lassie", 5, 4);
+var pig = new Animal("Wilbur", 4, 5);
+
+
+//user input
+var name = prompt("Hello! What is your name?");
+var userRacer = prompt(name + ", what kind of animal are you- turtle, rabbit, pig or cat?").toLowerCase();
+var compRacer = prompt("What kind of animal would you like to race- turtle, rabbit, pig or cat?").toLowerCase();
+
+//set up racers
+switch(userRacer) {
+	case "turtle":
+		var player1 = new Turtle(name) 
+		break;
+	case "rabbit":
+		var player1 = new Rabbit(name)
+		break;
+	case "pig":
+		var player1 = new Pig(name)
+		break;
+	case "cat":
+		var player1 = new Cat(name)
+		break;
+};
+
+switch(compRacer) {
+	case "turtle":
+		var player2 = new Turtle("Fred") 
+		break;
+	case "rabbit":
+		var player2 = new Rabbit("Jack")
+		break;
+	case "pig":
+		var player2 = new Pig("Wilbur")
+		break;
+	case "cat":
+		var player2 = new Cat("Garfield")
+		break;
+}
+
+//run race w/ updates
+var meters = 50;
+while(player1.position < meters && player2.position < 50) {
+	player1.advance();
+	player2.advance();
+	console.log(player1.progressReport() + "|" + player2.progressReport());
+};
+
+//output winner
+if(player1.position >= meters) {
+	alert("Well done, " + player1.name + "! You beat " + player2.name + " the " + userRacer + ".")
+} else {
+	alert("Sorry, " + player1.name + ". " + player2.name + " the " + userRacer + " beat you.")
+};
+
+
+</script>
