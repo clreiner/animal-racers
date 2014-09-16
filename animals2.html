@@ -51,7 +51,13 @@ function Pig(name) {
 //user input
 var name = prompt("Hello! What is your name?");
 var userRacer = prompt(name + ", what kind of animal are you- turtle, rabbit, pig or cat?").toLowerCase();
+if(userRacer !== "turtle" || userRacer !== "rabbit" || userRacer !== "pig" || userRacer !== "cat") {
+	userRacer = prompt("What was that? Please enter pig, turtle, cat or rabbit.");
+};
 var compRacer = prompt("What type of animal would you like to race- turtle, rabbit, pig or cat?").toLowerCase();
+if(compRacer !== "turtle" || compRacer !== "rabbit" || compRacer !== "pig" || compRacer !== "cat") {
+	compRacer = prompt("What was that? Please enter pig, turtle, cat or rabbit.");
+};
 
 //set up racers
 switch(userRacer) {
